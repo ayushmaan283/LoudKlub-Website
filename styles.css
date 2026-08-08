@@ -1,0 +1,116 @@
+/* ==========================================================================
+   LoudKlub Full Screen Canvas Scroll Animation + Tech Studio Landing Page
+   ========================================================================== */
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+
+  body {
+    overscroll-behavior: none;
+    background-image: radial-gradient(circle at 50% 0%, rgba(0,219,231,0.05) 0%, transparent 50%), linear-gradient(to bottom, #030914, #101415);
+    color: #e0e3e5;
+  }
+}
+
+/* Hide WebKit Scrollbar completely */
+::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Glass Navigation Styling */
+.glass-nav {
+  background: rgba(16,20,21,0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0,242,255,0.15);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+}
+
+.neon-glow {
+  filter: drop-shadow(0 0 8px rgba(0,219,231,0.4));
+}
+
+.glossy-btn {
+  background: linear-gradient(135deg, #00dbe7 0%, #0566d9 100%);
+  box-shadow: 0 0 20px rgba(0,242,255,0.2), inset 0 1px 0 rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+}
+
+.glossy-btn:hover {
+  box-shadow: 0 0 30px rgba(0,242,255,0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+  transform: translateY(-1px);
+}
+
+/* Preloader Screen */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #030914;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(0, 219, 231, 0.2);
+  border-top-color: #00dbe7;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loader-text {
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  font-family: monospace;
+  color: #00dbe7;
+}
+
+/* Pinned Canvas Container */
+#canvas-container {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #030914;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+#animation-canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* Scroll Animation Track */
+#scroll-animation-track {
+  height: 400vh;
+}
